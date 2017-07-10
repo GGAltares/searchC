@@ -2,20 +2,14 @@
 
 $curl = curl_init();
 $key = $_GET['key'];
-$s = $_GET['Company'];
 $sP = $_POST['Company'];
-$action = $_GET['action'];
-
-//test
+// GET DATA FROM API.AI CALL
 $json = file_get_contents('php://input');
 $request = json_decode($json, true);
 $action = $request["result"]["action"];
 $parameters = $request["result"]["parameters"];
 $sP = $parameters['Company'];
 
-
-
-//syslog(LOG_INFO, $s . "-". $sP);
 
 if ($sP!=null && $key !=null){
 
@@ -40,8 +34,8 @@ if ($sP!=null && $key !=null){
 
   if ($err) {
     echo '{
-         "speech": "errVoici les informations concernant '.$s.'-'.$sP.'",
-         "displayText": "errVoici les informations concernant '.$s.'-'.$sP.'",
+         "speech": "err '.$err.'",
+         "displayText": "err '.$err.'",
          "source": "apiai-dirigeant-company-altares"
      }';
     /*echo '{
@@ -55,10 +49,10 @@ if ($sP!=null && $key !=null){
 
     //echo $response;
     //echo json_decode($response);
-
+    $response
      echo '{
-          "speech": "Voici les informations concernant '.$s.'-'.$sP.'",
-          "displayText": "Voici les informations concernant '.$s.'-'.$sP.'",
+          "speech": "Voici les informations concernant '.$sP.'",
+          "displayText": "Voici les informations concernant '.explode(", ",$response).'",
           "source": "apiai-dirigeant-company-altares"
       }';
 
@@ -72,8 +66,8 @@ if ($sP!=null && $key !=null){
     }
   }';*/
   echo '{
-       "speech": "aVoici les informations concernant '.explode(", ",$_GET).'",
-       "displayText": "aVoici les informations concernant '.explode(", ",$_POST).'",
+       "speech": "EMPTY ",
+       "displayText": "EMPTY",
        "source": "apiai-dirigeant-company-altares"
    }';
 }
