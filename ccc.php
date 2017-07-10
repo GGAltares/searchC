@@ -23,23 +23,24 @@ $err = curl_error($curl);
 
 curl_close($curl);
 
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  header('Content-Type: application/json');
-  echo $response;
-  //echo json_decode($response);
-  /*
-   return {
-        "speech": speech,
-        "displayText": speech,
-        #"data": {},
-        # "contextOut": [],
-        "source": "apiai-onlinestore-shipping"
-    }  
-  */
-  
-}
+  if ($err) {
+    echo "cURL Error #:" . $err;
+  } else {
+    header('Content-Type: application/json');
+    
+    //echo $response;
+    //echo json_decode($response);
+    
+     echo '{
+          "speech": "Voici les informations concernant ".$s,
+          "displayText": "Voici les informations concernant ".$s,
+          #"data": {},
+          # "contextOut": [],
+          "source": "apiai-dirigeant-company-altares"
+      }';
+    
+
+  }
 }else {
   echo "Empty request";
 }
