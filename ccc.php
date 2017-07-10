@@ -1,9 +1,10 @@
 <?php
 
 $curl = curl_init();
-$s = $_GET['seachChunk'];
+$key = $_GET['key'];
+$s = $_GET['searchChunk'];
 
-if ($s!=null){
+if ($s!=null && $key !=null){
 curl_setopt_array($curl, array(
   CURLOPT_URL => "https://search.altares.fr/search?searchChunk=".$s,
   CURLOPT_RETURNTRANSFER => true,
@@ -13,9 +14,7 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "GET",
   CURLOPT_HTTPHEADER => array(
-    "cache-control: no-cache",
-    "postman-token: 373e9142-a90a-75f0-bab4-b31a7a5e809c",
-    "x-api-key: uwNPsInIeo59yK34sbnjB5R5dtsQzZSz9Jt7OZeN"
+    "x-api-key: ".$key
   ),
 ));
 
@@ -28,6 +27,16 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
+  /*
+   return {
+        "speech": speech,
+        "displayText": speech,
+        #"data": {},
+        # "contextOut": [],
+        "source": "apiai-onlinestore-shipping"
+    }  
+  */
+  
 }
 }else {
   echo "Empty request";
