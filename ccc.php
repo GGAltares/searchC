@@ -34,8 +34,6 @@ curl_close($curl);
      echo '{
           "speech": "Voici les informations concernant ".$s,
           "displayText": "Voici les informations concernant ".$s,
-          #"data": {},
-          # "contextOut": [],
           "source": "apiai-dirigeant-company-altares"
       }';
     
