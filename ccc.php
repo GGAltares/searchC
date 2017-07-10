@@ -30,7 +30,11 @@ if ($sP!=null && $key !=null){
   header('Content-Type: application/json');
 
   if ($err) {
-    echo "cURL Error #:" . $err;
+    echo '{
+         "speech": "errVoici les informations concernant '.$s.'-'.$sP.'",
+         "displayText": "errVoici les informations concernant '.$s.'-'.$sP.'",
+         "source": "apiai-dirigeant-company-altares"
+     }';
     /*echo '{
       "status": {
       "code": 500,
@@ -58,6 +62,10 @@ if ($sP!=null && $key !=null){
     "errorType": "Empty request"
     }
   }';*/
-  echo "Empty request";
+  echo '{
+       "speech": "aVoici les informations concernant '.$s.'-'.$sP.'",
+       "displayText": "aVoici les informations concernant '.$s.'-'.$sP.'",
+       "source": "apiai-dirigeant-company-altares"
+   }';
 }
 ?>
