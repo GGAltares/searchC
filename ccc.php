@@ -2,7 +2,7 @@
 
 $curl = curl_init();
 $key = $_GET['key'];
-$s = $_GET['company'];
+$s = $_GET['Company'];
 
 if ($s!=null && $key !=null){
 curl_setopt_array($curl, array(
