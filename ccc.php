@@ -3,10 +3,7 @@
 $curl = curl_init();
 $key = $_GET['key'];
 $s = $_GET['Company'];
-//$s = $_POST['Company'];
-
-print $_GET['Company'];
-print $_POST['Company'];
+$sP = $_POST['Company'];
 
 if ($s!=null && $key !=null){
 curl_setopt_array($curl, array(
@@ -36,8 +33,8 @@ curl_close($curl);
     //echo json_decode($response);
 
      echo '{
-          "speech": "Voici les informations concernant '.$s.'",
-          "displayText": "Voici les informations concernant '.$s.'",
+          "speech": "Voici les informations concernant '.$s.'-'.$sP.'",
+          "displayText": "Voici les informations concernant '.$s.'-'.$sP.'",
           "source": "apiai-dirigeant-company-altares"
       }';
 
