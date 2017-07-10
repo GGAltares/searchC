@@ -49,7 +49,6 @@ if ($sP!=null && $key !=null){
 
     //echo $response;
     //echo json_decode($response);
-    $response
      echo '{
           "speech": "Voici les informations concernant '.$sP.'",
           "displayText": "Voici les informations concernant '.explode(", ",$response).'",
