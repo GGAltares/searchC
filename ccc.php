@@ -4,8 +4,9 @@ $curl = curl_init();
 $key = $_GET['key'];
 $s = $_GET['Company'];
 $sP = $_POST['Company'];
+$action = $_GET['action'];
 
-syslog(LOG_INFO, $s . "-". $sP);
+//syslog(LOG_INFO, $s . "-". $sP);
 
 if ($sP!=null && $key !=null){
 
@@ -29,13 +30,14 @@ if ($sP!=null && $key !=null){
   header('Content-Type: application/json');
 
   if ($err) {
-    //echo "cURL Error #:" . $err;
-    echo '{
+    echo "cURL Error #:" . $err;
+    /*echo '{
       "status": {
       "code": 500,
       "errorType": "ERR-'.$err.'"
       }
     }';
+    */
   } else {
 
     //echo $response;
@@ -50,12 +52,12 @@ if ($sP!=null && $key !=null){
 
   }
 } else {
-  echo '{
+/*  echo '{
     "status": {
     "code": 400,
     "errorType": "Empty request"
     }
-  }';
-  //echo "Empty request";
+  }';*/
+  echo "Empty request";
 }
 ?>
