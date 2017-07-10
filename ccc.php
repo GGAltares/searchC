@@ -26,7 +26,8 @@ curl_close($curl);
 if ($err) {
   echo "cURL Error #:" . $err;
 } else {
-  echo $response;
+  header('Content-Type: application/json');
+  echo json_decode($response);
   /*
    return {
         "speech": speech,
