@@ -9,14 +9,21 @@ $request = json_decode($json, true);
 $action = $request["result"]["action"];
 $parameters = $request["result"]["parameters"];
 $sP = $parameters['Company'];
+
+// get term by get if not via api.ai
 if($sP == ""){
   $sP = $_GET['Company'];
 }
 
 if ($sP!=null && $key !=null){
+  //remove spaces in siren
+  if (is_numeric(str_replace(" ","", $sP))) {
+    $sP = str_replace(" ","", $sP);
+  }
 
+  // CALL TO OUR LOCAL WS tO GET COMPANY DATA
   curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://search.altares.fr/search?searchChunk=".$sP,
+    CURLOPT_URL => "https://search.altares.fr/search?searchChunk=".urlencode($sP),
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -32,8 +39,8 @@ if ($sP!=null && $key !=null){
   $err = curl_error($curl);
 
   curl_close($curl);
-  header('Content-Type: application/json');
 
+  header('Content-Type: application/json');
   if ($err) {
     echo '{
          "speech": "err '.$err.'",
@@ -48,10 +55,10 @@ if ($sP!=null && $key !=null){
     }';
     */
   } else {
-
     $json = json_decode($response);
+    if(count($json)>0){
     $data = array_map('convert', $json);
-    $prez = $data[0]['value']." (".$data[0]['siren'].") \n\r A l'adresse suivante : ".$data[0]['venue']."<br>".$data[0]['activity']."";
+    $prez = $data[0]['value']." (".$data[0]['siren'].") \n\r A l'adresse suivante : ".$data[0]['venue']."\n\r".$data[0]['activity']."";
     echo '{
           "speech": "Voici les informations concernant '.$prez.'",
           "displayText": "Voici les informations concernant '.$prez.'",
@@ -59,7 +66,14 @@ if ($sP!=null && $key !=null){
           "source": "apiai-dirigeant-company-altares"
       }';
 
-
+    }else{
+      echo $sP . "   ".$json;
+      echo '{
+          "status": {
+          "code": 400,
+          "errorType": "No Results"
+        }';
+    }
   }
 } else {
 /*  echo '{
