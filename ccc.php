@@ -2,7 +2,7 @@
 
 $curl = curl_init();
 $key = $_GET['key'];
-$s = $_GET['searchChunk'];
+$s = $_GET['company'];
 
 if ($s!=null && $key !=null){
 curl_setopt_array($curl, array(
@@ -27,16 +27,16 @@ curl_close($curl);
     echo "cURL Error #:" . $err;
   } else {
     header('Content-Type: application/json');
-    
+
     //echo $response;
     //echo json_decode($response);
-    
+
      echo '{
           "speech": "Voici les informations concernant '.$s.'",
           "displayText": "Voici les informations concernant '.$s.'",
           "source": "apiai-dirigeant-company-altares"
       }';
-    
+
 
   }
 }else {
