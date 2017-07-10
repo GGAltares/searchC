@@ -5,9 +5,9 @@ $key = $_GET['key'];
 $s = $_GET['Company'];
 $sP = $_POST['Company'];
 
-if ($s!=null && $key !=null){
+if ($sP!=null && $key !=null){
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://search.altares.fr/search?searchChunk=".$s,
+  CURLOPT_URL => "https://search.altares.fr/search?searchChunk=".$sP,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -23,11 +23,15 @@ $response = curl_exec($curl);
 $err = curl_error($curl);
 
 curl_close($curl);
+header('Content-Type: application/json');
 
   if ($err) {
-    echo "cURL Error #:" . $err;
+    //echo "cURL Error #:" . $err;
+    echo '"status": {
+      "code": 500,
+      "errorType": "ERR-'.$err.'"
+    }';
   } else {
-    header('Content-Type: application/json');
 
     //echo $response;
     //echo json_decode($response);
@@ -40,7 +44,11 @@ curl_close($curl);
 
 
   }
-}else {
-  echo "Empty request";
+} else {
+  echo '"status": {
+    "code": 400,
+    "errorType": "Empty request"
+  }';
+  //echo "Empty request";
 }
 ?>
