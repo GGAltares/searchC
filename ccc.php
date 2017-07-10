@@ -6,6 +6,15 @@ $s = $_GET['Company'];
 $sP = $_POST['Company'];
 $action = $_GET['action'];
 
+//test
+$json = file_get_contents('php://input');
+$request = json_decode($json, true);
+$action = $request["result"]["action"];
+$parameters = $request["result"]["parameters"];
+$sP = $parameters['Company'];
+
+
+
 //syslog(LOG_INFO, $s . "-". $sP);
 
 if ($sP!=null && $key !=null){
