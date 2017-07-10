@@ -63,8 +63,8 @@ if ($sP!=null && $key !=null){
     }
   }';*/
   echo '{
-       "speech": "aVoici les informations concernant '.$s.'-'.$sP.'",
-       "displayText": "aVoici les informations concernant '.$s.'-'.$sP.'",
+       "speech": "aVoici les informations concernant '.explode(", ",$_GET).'",
+       "displayText": "aVoici les informations concernant '.explode(", ",$_POST).'",
        "source": "apiai-dirigeant-company-altares"
    }';
 }
