@@ -32,8 +32,8 @@ curl_close($curl);
     //echo json_decode($response);
     
      echo '{
-          "speech": "Voici les informations concernant ".$s,
-          "displayText": "Voici les informations concernant ".$s,
+          "speech": "Voici les informations concernant '.$s.'",
+          "displayText": "Voici les informations concernant '.$s.'",
           "source": "apiai-dirigeant-company-altares"
       }';
     
