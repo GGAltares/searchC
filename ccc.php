@@ -1,9 +1,11 @@
 <?php
 
 $curl = curl_init();
+$s = $_GET['seachChunk'];
 
+if ($s!=null){
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://search.altares.fr/search?searchChunk=Altares",
+  CURLOPT_URL => "https://search.altares.fr/search?searchChunk=".$s,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -26,5 +28,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
+}
+}else {
+  echo "Empty request";
 }
 ?>
