@@ -5,7 +5,10 @@ $key = $_GET['key'];
 $s = $_GET['Company'];
 $sP = $_POST['Company'];
 
+syslog(LOG_INFO, $s . "-". $sP);
+
 if ($sP!=null && $key !=null){
+
   curl_setopt_array($curl, array(
     CURLOPT_URL => "https://search.altares.fr/search?searchChunk=".$sP,
     CURLOPT_RETURNTRANSFER => true,
