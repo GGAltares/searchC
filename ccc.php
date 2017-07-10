@@ -54,7 +54,7 @@ if ($sP!=null && $key !=null){
      echo '{
           "speech": "Voici les informations concernant '.$sP.'",
           "displayText": "Voici les informations concernant '.explode(", ",$response).'",
-          "data":"'.$data.'",
+          "data":"'.json_encode($data).'",
           "source": "apiai-dirigeant-company-altares"
       }';
 
