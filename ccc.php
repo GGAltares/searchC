@@ -51,7 +51,7 @@ if ($sP!=null && $key !=null){
 
     $json = json_decode($response);
     $data = array_map('convert', $json);
-    $prez = $data[0]['value']." (".$data[0]['siren'].")";
+    $prez = $data[0]['value']." (".$data[0]['siren'].") <br> A l'adresse suivante : ".$data[0]['venue']."<br>".$data[0]['activity']."";
     echo '{
           "speech": "Voici les informations concernant '.$prez.'",
           "displayText": "Voici les informations concernant '.$prez.'",
