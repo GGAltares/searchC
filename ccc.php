@@ -2,14 +2,16 @@
 
 $curl = curl_init();
 $key = $_GET['key'];
-$sP = $_POST['Company'];
+
 // GET DATA FROM API.AI CALL
 $json = file_get_contents('php://input');
 $request = json_decode($json, true);
 $action = $request["result"]["action"];
 $parameters = $request["result"]["parameters"];
 $sP = $parameters['Company'];
-
+if($sP == ""){
+  $sP = $_GET['Company'];
+}
 
 if ($sP!=null && $key !=null){
 
@@ -49,12 +51,11 @@ if ($sP!=null && $key !=null){
 
     $json = json_decode($response);
     $data = array_map('convert', $json);
-    //echo $response;
-    //echo json_decode($response);
-     echo '{
+
+    echo '{
           "speech": "Voici les informations concernant '.$sP.'",
           "displayText": "Voici les informations concernant '.explode(", ",$response).'",
-          "data":"'.$data.'",
+          "data":"'.json_encode($data[0]).'",
           "source": "apiai-dirigeant-company-altares"
       }';
 
