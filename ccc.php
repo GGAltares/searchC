@@ -27,7 +27,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   header('Content-Type: application/json');
-  print json_decode($response);
+  echo $response;
+  //echo json_decode($response);
   /*
    return {
         "speech": speech,
