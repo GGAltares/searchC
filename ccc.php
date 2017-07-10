@@ -51,11 +51,11 @@ if ($sP!=null && $key !=null){
 
     $json = json_decode($response);
     $data = array_map('convert', $json);
-
+    $prez = $data[0]['value']." (".$data[0]['siren'].")";
     echo '{
-          "speech": "Voici les informations concernant '.$sP.'",
-          "displayText": "Voici les informations concernant '.explode(", ",$response).'",
-          "data":"'.json_encode($data[0]).'",
+          "speech": "Voici les informations concernant '.$prez.'",
+          "displayText": "Voici les informations concernant '.$prez.'",
+          "data":'.json_encode($data[0]).',
           "source": "apiai-dirigeant-company-altares"
       }';
 
