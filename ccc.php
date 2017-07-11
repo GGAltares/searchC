@@ -97,8 +97,8 @@ if ($sP!=null && $key !=null){
     }
   }';*/
   echo '{
-       "speech": "EMPTY ",
-       "displayText": "EMPTY",
+       "speech": "Pas de données utilisables "'.$sP.',
+       "displayText": "Pas de données utilisables "'.$sP.',
        "source": "apiai-dirigeant-company-altares"
    }';
 }
