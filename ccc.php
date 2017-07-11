@@ -73,8 +73,6 @@ function search($sP) {
     $json = json_decode($response);
     if(count($json)>0){
       if(count($json)==1){
-        print_r($json);
-
         $data = array_map('convert', $json);
         $prez = $data[0]['value']." (".$data[0]['siren'].") \n\r A l'adresse suivante : ".$data[0]['venue']."\n\r".$data[0]['activity']."";
         echo '{
