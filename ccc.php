@@ -75,10 +75,10 @@ if ($sP!=null && $key !=null){
       }
     }else{
       echo '{
-          "status": {
-          "code": 400,
-          "errorType": "No Results"
-        }';
+           "speech": "Pas de résultats utilisables "'.$sP.',
+           "displayText": "Pas de résultats utilisables "'.$sP.',
+           "source": "apiai-dirigeant-company-altares"
+       }';
     }
   }
 } else {
