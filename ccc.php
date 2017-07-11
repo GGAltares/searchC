@@ -75,8 +75,8 @@ if ($sP!=null && $key !=null){
       }
     }else{
       echo '{
-           "speech": "Pas de résultats utilisables "'.$sP.',
-           "displayText": "Pas de résultats utilisables "'.$sP.',
+           "speech": "Pas de résultats utilisables '.$sP.'",
+           "displayText": "Pas de résultats utilisables '.$sP.'",
            "source": "apiai-dirigeant-company-altares"
        }';
     }
@@ -89,8 +89,8 @@ if ($sP!=null && $key !=null){
     }
   }';*/
   echo '{
-       "speech": "Pas de données utilisables "'.$sP.',
-       "displayText": "Pas de données utilisables "'.$sP.',
+       "speech": "Pas de données utilisables '.$sP.'",
+       "displayText": "Pas de données utilisables '.$sP.'",
        "source": "apiai-dirigeant-company-altares"
    }';
 }
