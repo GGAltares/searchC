@@ -143,7 +143,7 @@ function findDirigeant($sP) {
         //print_r($json);
         //$data = array_map('convertD', $json);
         $prez = "Le dirigeant de la société ".$json->value." (".$json->siren.")
-        est ".$json->director->firstName." ".$json->director->lastName." en tant que ".$json->director->label. " depuis ".$json->director->startAt;
+        est ".(($json->director->legalName!='')?$json->director->legalName:$json->director->firstName." ".$json->director->lastName)." en tant que ".$json->director->label. " depuis ".$json->director->startAt;
         echo '{
               "speech": "Voici : '.$prez.'",
               "displayText": "Voici : '.$prez.'",
