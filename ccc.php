@@ -23,7 +23,7 @@ if ($sP!=null && $key !=null){
 
   // CALL TO OUR LOCAL WS tO GET COMPANY DATA
   curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://search.altares.fr/search?searchChunk=".urlencode($sP),
+    CURLOPT_URL => "https://search.altares.fr/search?searchChunk=".urlencode($sP)."&isActiv=true",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
