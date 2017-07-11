@@ -41,7 +41,7 @@ if ($sP!=null && $key !=null){
   curl_close($curl);
 
   header('Content-Type: application/json');
-  if ($err) {
+  if ($err || $response==null) {
     echo '{
          "speech": "err '.$err.'",
          "displayText": "err '.$err.'",
