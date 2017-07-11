@@ -47,13 +47,6 @@ if ($sP!=null && $key !=null){
          "displayText": "err '.$err.'",
          "source": "apiai-dirigeant-company-altares"
      }';
-    /*echo '{
-      "status": {
-      "code": 500,
-      "errorType": "ERR-'.$err.'"
-      }
-    }';
-    */
   } else {
     $json = json_decode($response);
     if(count($json)>0){
@@ -81,7 +74,6 @@ if ($sP!=null && $key !=null){
             }';
       }
     }else{
-      echo $sP . "   ".$json;
       echo '{
           "status": {
           "code": 400,
