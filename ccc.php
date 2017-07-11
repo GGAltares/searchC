@@ -45,7 +45,7 @@ if ($sP!=null && $key !=null){
     echo '{
          "speech": "err '.$err.'",
          "displayText": "err '.$err.'",
-         "source": "apiai-dirigeant-company-altares"
+         "source": "apiai-dirigeant-company-altares-'.$action.'"
      }';
   } else {
     $json = json_decode($response);
@@ -57,7 +57,7 @@ if ($sP!=null && $key !=null){
               "speech": "Voici les informations concernant '.$prez.'",
               "displayText": "Voici les informations concernant '.$prez.'",
               "data":'.json_encode($data[0]).',
-              "source": "apiai-dirigeant-company-altares"
+              "source": "apiai-dirigeant-company-altares-'.$action.'"
             }';
       } else {
         $data = array_map('convert', $json);
@@ -70,14 +70,14 @@ if ($sP!=null && $key !=null){
               "speech": "'.$prez.'",
               "displayText": "'.$prez.'",
               "data":'.json_encode($data[0]).',
-              "source": "apiai-dirigeant-company-altares"
+              "source": "apiai-dirigeant-company-altares-'.$action.'"
             }';
       }
     }else{
       echo '{
            "speech": "Pas de résultats utilisables '.$sP.'",
            "displayText": "Pas de résultats utilisables '.$sP.'",
-           "source": "apiai-dirigeant-company-altares"
+           "source": "apiai-dirigeant-company-altares-'.$action.'"
        }';
     }
   }
