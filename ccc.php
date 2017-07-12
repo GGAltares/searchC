@@ -146,7 +146,7 @@ function findDirigeant($sP) {
         est ".(($json->director->legalName!='')?$json->director->legalName:$json->director->firstName." ".$json->director->lastName)." en tant que ".$json->director->label. " depuis ".$json->director->startAt;
         echo '{
               "speech": "Voici : '.$prez.'",
-              "displayText": "Voici : '.$prez.'",
+              "displayText": "Voici le résultat: '.$prez.'",
               "data":'.json_encode($json).',
               "source": "apiai-dirigeant-company-altares-'.$action.'"
             }';
