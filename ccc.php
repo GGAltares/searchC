@@ -13,6 +13,9 @@ $sP = $parameters['Company'];
 if($sP == ""){
   $sP = $_GET['Company'];
 }
+if($sP == ""){ // FROM MOTION.AI
+  $sP = $_POST['replyData'];
+}
 // get action (testing purposes) by get if not via api.ai
 if($action == ""){
   $action = $_GET['action'];
