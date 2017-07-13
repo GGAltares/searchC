@@ -34,7 +34,7 @@ if ($sP!=null && $key !=null && $action!=null){
   }
   } else {
     echo '{
-         "speech": "Pas de données utilisables '.$sP.'-'.implode("-",$_POST).'",
+         "speech": "Pas de données utilisables '.$sP.'",
          "displayText": "Pas de données utilisables '.$sP.'",
          "source": "apiai-dirigeant-company-altares-'.$action.'"
      }';
