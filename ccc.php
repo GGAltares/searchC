@@ -14,7 +14,7 @@ if($sP == ""){
   $sP = $_GET['Company'];
 }
 if($sP == ""){ // FROM MOTION.AI
-  $sP = $_POST['replyData'];
+  $sP = $request['replyData'];
 }
 // get action (testing purposes) by get if not via api.ai
 if($action == ""){
@@ -34,7 +34,7 @@ if ($sP!=null && $key !=null && $action!=null){
   }
   } else {
     echo '{
-         "speech": "Pas de données utilisables '.$sP.'-'.$_POST['replyData'].'",
+         "speech": "Pas de données utilisables '.$sP.'-'.$request['replyData'].'--'.$request['reply'].'",
          "displayText": "Pas de données utilisables '.$sP.'",
          "source": "apiai-dirigeant-company-altares-'.$action.'"
      }';
