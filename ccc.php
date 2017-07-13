@@ -18,7 +18,7 @@ if($sP == ""){ // FROM MOTION.AI
 }
 // get action (testing purposes) by get if not via api.ai
 if($action == ""){
-  $action = $_GET['action'];
+  $action = ($_GET['action']!=null)?$_GET['action']:$_POST['action'];
 }
 
 if ($sP!=null && $key !=null && $action!=null){
@@ -34,7 +34,7 @@ if ($sP!=null && $key !=null && $action!=null){
   }
   } else {
     echo '{
-         "speech": "Pas de données utilisables '.$sP.'",
+         "speech": "Pas de données utilisables '.$sP.'-'.implode("-",$_POST).'",
          "displayText": "Pas de données utilisables '.$sP.'",
          "source": "apiai-dirigeant-company-altares-'.$action.'"
      }';
