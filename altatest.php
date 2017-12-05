@@ -167,7 +167,7 @@ function findDirigeant($sP) {
 
 function convert($item) {
   $res = array();
-  $res['text'] = $item->legalName." (".$item->siren.") \n\r A l'adresse suivante : ".$item->address->rnvpL4.', '.$item->address->rnvpL6."\n\r".$item->nafDescription."\n\r-> <https://www.manageo.fr/entreprises/".$item->siren.".html?utm_source=slack&utm_medium=referral&utm_campaign=slack'.">";
+  $res['text'] = $item->legalName." (".$item->siren.") \n\r A l'adresse suivante : ".$item->address->rnvpL4.', '.$item->address->rnvpL6."\n\r".$item->nafDescription."\n\r-> <https://www.manageo.fr/entreprises/".$item->siren.".html?utm_source=slack&utm_medium=referral&utm_campaign=slack>";
   $res['value'] = $item->legalName;
   $res['name'] = $item->legalName;
   $res['siren'] = $item->siren;
