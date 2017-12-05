@@ -167,15 +167,11 @@ function findDirigeant($sP) {
 
 function convert($item) {
   $res = array();
-  $res['text'] = $item->legalName." (".$item->siren.") \n\r A l'adresse suivante : ".$item->address->rnvpL4.', '.$item->address->rnvpL6."\n\r".$item->nafDescription."\n\r-> <https://www.manageo.fr/entreprises/".$item->siren.".html?utm_source=slack&utm_medium=referral&utm_campaign=slack>";
-  $res['value'] = $item->legalName;
-  $res['name'] = $item->legalName;
-  $res['siren'] = $item->siren;
-  $res['activity'] = $item->nafDescription;
-  $res['rnvpL4'] = $item->address->rnvpL4;
-  $res['rnvpL6'] = $item->address->rnvpL6;
-  $res['venue'] = $item->address->rnvpL4.', '.$item->address->rnvpL6;
-  $res['url'] = '--'.$item->siren.'?utm_source=altares.fr&utm_medium=referral&utm_campaign=searchhome';
+  $res['title']= $item->legalName ." (".$item->siren.")";
+  $res['title_link']= "https://www.manageo.fr/entreprises/".$item->siren.".html?utm_source=slack&utm_medium=referral&utm_campaign=slack";
+  $res['text'] = $item->nafDescription."\n\r :office: ".$item->address->rnvpL4.', '.$item->address->rnvpL6;
+  $res["color"]= "#42C1C6";
+
   return $res;
 }
 
