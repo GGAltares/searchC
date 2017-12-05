@@ -1,7 +1,7 @@
 <?php
 
 $curl = curl_init();
-$key = "uwNPsInIeo59yK34sbnjB5R5dtsQzZSz9Jt7OZeN";
+$key = $_GET['key'];
 $sP = $_POST['text'];
 
 // GET DATA FROM API.AI CALL
@@ -69,20 +69,19 @@ function search($sP) {
         echo '{
               "speech": "Voici les informations concernant '.$prez.'",
               "text": "Voici les informations concernant '.$prez.'",
-              "attachments":'.json_encode($data[0]).',
+              "attachments":['.json_encode($data[0]).'],
               "source": "apiai-dirigeant-company-altares-'.$action.'"
             }';
       } else {
         $data = array_map('convert', $json);
-        $prez="J'ai trouvé ".count($data)." entreprises avec les informations que vous m'avez donné...\n\r
-                Laquelle vous intéresse ?\r\n";
+        $prez="J'ai trouvé ".count($data)." entreprises avec les informations que vous m'avez donné...\n\rLaquelle vous intéresse ?\r\n";
         for($i=0;$i<count($data);$i++){
-          $prez.= $data[$i]['value']." (".$data[$i]['siren'].") \n\r A l'adresse suivante : ".$data[$i]['rnvpL6'].". \n\r";
+          //$prez.= $data[$i]['value']." (".$data[$i]['siren'].") \n\r A l'adresse suivante : ".$data[$i]['rnvpL6'].". \n\r";
         }
         echo '{
               "speech": "'.$prez.'",
               "text": "'.$prez.'",
-              "attachments":'.json_encode($data[0]).',
+              "attachments":'.json_encode($data).',
               "source": "apiai-dirigeant-company-altares-'.$action.'"
             }';
       }
@@ -168,6 +167,7 @@ function findDirigeant($sP) {
 
 function convert($item) {
   $res = array();
+  $res['text'] = $item->legalName." (".$item->siren.") \n\r A l'adresse suivante : ".$item->address->rnvpL4.', '.$item->address->rnvpL6."\n\r".$item->nafDescription."";
   $res['value'] = $item->legalName;
   $res['name'] = $item->legalName;
   $res['siren'] = $item->siren;
