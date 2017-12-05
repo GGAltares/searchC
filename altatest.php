@@ -69,7 +69,7 @@ function search($sP) {
         echo '{
               "speech": "Voici les informations concernant '.$prez.'",
               "text": "Voici les informations concernant '.$prez.'",
-              "data":'.json_encode($data[0]).',
+              "attachments":'.json_encode($data[0]).',
               "source": "apiai-dirigeant-company-altares-'.$action.'"
             }';
       } else {
@@ -82,7 +82,7 @@ function search($sP) {
         echo '{
               "speech": "'.$prez.'",
               "text": "'.$prez.'",
-              "data":'.json_encode($data[0]).',
+              "attachments":'.json_encode($data[0]).',
               "source": "apiai-dirigeant-company-altares-'.$action.'"
             }';
       }
