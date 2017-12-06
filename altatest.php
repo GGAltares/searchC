@@ -182,6 +182,17 @@ function convertOpen($item) {
   $res['title_link']= "https://www.manageo.fr/entreprises/".$item->fields->siren.".html?utm_source=slack&utm_medium=referral&utm_campaign=slack";
   $res['text'] = $item->fields->libmonoact."\n\r :office: ".$item->fields->l4_normalisee.', '.$item->fields->l6_normalisee;
   $res["color"]= "#42C1C6";
+
+  $fields = array();
+  $field = array("title"=>"Catégorie","value"=>$item->fields->categorie,"short"=>"false");
+  array_push($fields,$field);
+  $field = array("title"=>"Effectif","value"=>$item->fields->libtefen,"short"=>"false");
+  array_push($fields,$field);
+  $field = array("title"=>"Activité","value"=>$item->fields->libesaapen,"short"=>"false");
+  array_push($fields,$field);
+  $field = array("title"=>"C.A.","value"=>$item->fields->libtca,"short"=>"false");
+  array_push($fields,$field);
+  $res["fields"] = $fields;
   /*
   $res['value'] = $item->fields->nomen_long;
   $res['name'] = $item->fields->nomen_long;
