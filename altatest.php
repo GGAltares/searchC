@@ -67,7 +67,7 @@ function search($sP) {
     if(count($json)>0){
       if(count($json)==1){
         $data = array_map('convertOpen', $json);
-        $prez = "Nous avons trouvé l'entreprise que vous cherchez (".$sP.")";
+        $prez = "Voici l'entreprise que vous cherchez (".$sP.")";
         echo '{
               "speech": "'.$prez.'",
               "text": "'.$prez.'",
@@ -76,7 +76,7 @@ function search($sP) {
             }';
       } else {
         $data = array_map('convertOpen', $json);
-        $prez="J'ai trouvé ".count($data)." entreprises avec les informations que vous m'avez donné...\n\rLaquelle vous intéresse ?\r\n";
+        $prez="J'ai trouvé ".count($data)." entreprises avec les informations que vous m'avez donné...\n\rSoyez plus précis en ajoutant des éléments d'adresse et/ou de SIREN.";
         for($i=0;$i<count($data);$i++){
           //$prez.= $data[$i]['value']." (".$data[$i]['siren'].") \n\r A l'adresse suivante : ".$data[$i]['rnvpL6'].". \n\r";
         }
